@@ -1,0 +1,23 @@
+v0.2.1 privileged module validation
+PASS: real SDK APK identity, signature and requested permissions verified.
+PASS: embedded APK is the delivered v0.2.1 versionCode 3.
+PASS: independent module rebuild is byte-for-byte identical.
+{
+  "module": "/workspace/scratch/65a7949dc1a9/Sinch-Mobile-VQ-Probe-v0.2.1-privileged-module.zip",
+  "sha256": "1d2b4e2f73b747568a158498cf739a2ba734946ef7d3d13a5397d781c80b7e22",
+  "package": "com.sinch.vqprobe",
+  "version_code": 3,
+  "version_name": "0.2.1",
+  "apk_sha256": "b3dcc8eddf8e8e138a6eba9f4fd4509062d6359dcb325a3ce15bd03137a8b020",
+  "signer_sha256": "2a1fa74d4fe2bb699d2cc06416fa1dc63a3546e926d55a90151dd436284893f0",
+  "apk_size_bytes": 2857131,
+  "required_privileged_permissions": [
+    "android.permission.MODIFY_PHONE_STATE",
+    "android.permission.CAPTURE_AUDIO_OUTPUT",
+    "android.permission.READ_PRECISE_PHONE_STATE",
+    "android.permission.READ_PRIVILEGED_PHONE_STATE"
+  ],
+  "build_reproducibility": "identical APK and source template produce identical ZIP bytes"
+}
+
+No device install, flashing, root or physical audio test was performed.

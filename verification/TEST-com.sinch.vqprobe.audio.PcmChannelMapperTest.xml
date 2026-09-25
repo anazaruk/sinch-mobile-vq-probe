@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.sinch.vqprobe.audio.PcmChannelMapperTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-09-25T14:37:48" hostname="6e67524789a5" time="0.005">
+  <properties/>
+  <testcase name="rejectsIncompleteSamplesNegativeCountsAndCountsOutsideBuffer" classname="com.sinch.vqprobe.audio.PcmChannelMapperTest" time="0.001"/>
+  <testcase name="zeroCountReturnsNoFramesEvenWhenSourceContainsData" classname="com.sinch.vqprobe.audio.PcmChannelMapperTest" time="0.003"/>
+  <testcase name="outputAndInputNeverShareMutableStorage" classname="com.sinch.vqprobe.audio.PcmChannelMapperTest" time="0.0"/>
+  <testcase name="duplicatesSignedPcm16ExtremesWithoutChangingLittleEndianBytes" classname="com.sinch.vqprobe.audio.PcmChannelMapperTest" time="0.0"/>
+  <testcase name="finalPartialReadDuplicatesOnlyValidFramesAndIgnoresTrailingBuffer" classname="com.sinch.vqprobe.audio.PcmChannelMapperTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

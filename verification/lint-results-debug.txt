@@ -1,0 +1,149 @@
+<project>/android/app/src/main/java/com/sinch/vqprobe/ui/MainActivity.kt:102: Warning: This argument is a new instance so stopService will not remove anything [ImplicitSamInstance]
+            stopService(Intent(this, ProbeService::class.java))
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "ImplicitSamInstance":
+   Kotlin's support for SAM (single abstract method) interfaces lets you pass
+   a lambda to the interface. This will create a new instance on the fly even
+   though there is no explicit constructor call. If you pass one of these
+   lambdas or method references into a method which (for example) stores or
+   compares the object identity, unexpected results may happen.
+
+   In particular, passing a lambda variable in as a listener, and then later
+   attempting to remove the listener will not work because a different
+   instance is passed in.
+
+   https://kotlinlang.org/docs/fun-interfaces.html#sam-conversions
+
+<project>/android/app/src/main/java/com/sinch/vqprobe/audio/AudioDiagnostics.kt:24: Warning: Field requires API level 30 (current min is 29): android.Manifest.permission#READ_PRECISE_PHONE_STATE [InlinedApi]
+            Manifest.permission.READ_PRECISE_PHONE_STATE, "android.permission.READ_PRIVILEGED_PHONE_STATE",
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<project>/android/app/src/main/java/com/sinch/vqprobe/audio/CallAudioCaptureController.kt:481: Warning: Field requires API level 31 (current min is 29): android.media.AudioDeviceInfo#TYPE_BLE_HEADSET [InlinedApi]
+            AudioDeviceInfo.TYPE_BLE_HEADSET, AudioDeviceInfo.TYPE_BLE_SPEAKER,
+            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<project>/android/app/src/main/java/com/sinch/vqprobe/audio/CallAudioCaptureController.kt:481: Warning: Field requires API level 31 (current min is 29): android.media.AudioDeviceInfo#TYPE_BLE_SPEAKER [InlinedApi]
+            AudioDeviceInfo.TYPE_BLE_HEADSET, AudioDeviceInfo.TYPE_BLE_SPEAKER,
+                                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "InlinedApi":
+   This check scans through all the Android API field references in the
+   application and flags certain constants, such as static final integers and
+   Strings, which were introduced in later versions. These will actually be
+   copied into the class files rather than being referenced, which means that
+   the value is available even when running on older devices. In some cases
+   that's fine, and in other cases it can result in a runtime crash or
+   incorrect behavior. It depends on the context, so consider the code
+   carefully and decide whether it's safe and can be suppressed or whether the
+   code needs to be guarded.
+
+   If you really want to use this API and don't need to support older devices
+   just set the minSdkVersion in your build.gradle or AndroidManifest.xml
+   files.
+
+   If your code is deliberately accessing newer APIs, and you have ensured
+   (e.g. with conditional execution) that this code will only ever be called
+   on a supported platform, then you can annotate your class or method with
+   the @TargetApi annotation specifying the local minimum SDK to apply, such
+   as @TargetApi(11), such that this check considers 11 rather than your
+   manifest file's minimum SDK as the required API level.
+
+<project>/android/app/src/main/java/com/sinch/vqprobe/audio/AudioArtifactStore.kt:28: Warning: Consider also using StorageManager#getAllocatableBytes and allocateBytes which will consider clearable cached data [UsableSpace]
+        check(directory.usableSpace >= WavPcm.MAX_FILE_BYTES + 8L * 1024 * 1024) { "INSUFFICIENT_AUDIO_STORAGE" }
+                        ~~~~~~~~~~~
+
+   Explanation for issues of type "UsableSpace":
+   When you need to allocate disk space for large files, consider using the
+   new allocateBytes(FileDescriptor, long) API, which will automatically clear
+   cached files belonging to other apps (as needed) to meet your request.
+
+   When deciding if the device has enough disk space to hold your new data,
+   call getAllocatableBytes(UUID) instead of using getUsableSpace(), since the
+   former will consider any cached data that the system is willing to clear on
+   your behalf.
+
+   Note that these methods require API level 26. If your app is running on
+   older devices, you will probably need to use both APIs, conditionally
+   switching on Build.VERSION.SDK_INT. Lint only looks in the same compilation
+   unit to see if you are already using both APIs, so if it warns even though
+   you are already using the new API, consider moving the calls to the same
+   file or suppressing the warning.
+
+<project>/android/app/src/main/AndroidManifest.xml:3: Warning: Consider whether this feature (android.hardware.telephony) really is required for the app to function; you can set android:required="false" to indicate that the feature is used but not required [UnnecessaryRequiredFeature]
+    <uses-feature android:name="android.hardware.telephony" android:required="true" />
+                                ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "UnnecessaryRequiredFeature":
+   Avoid unnecessarily requiring features that may exclude your app from being
+   served onto devices it might otherwise support.
+
+   Consider whether your application can function adequately without
+   restrictive feature requirements by setting these to
+   android:required="false". By doing so, you can increase the availability of
+   your app to a broader set of devices, including tablets, laptops and cars.
+
+<project>/android/app/src/main/java/com/sinch/vqprobe/ui/AudioDiagnosticsActivity.kt:57: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+        mute = CheckBox(this).apply { text = "Mute physical microphone during injection"; isChecked = true; body.addView(this) }
+                                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<project>/android/app/src/main/java/com/sinch/vqprobe/ui/AudioDiagnosticsActivity.kt:59: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+            text = "DIGITAL_TX_VALIDATION (verified microphone mute)"; isChecked = true
+                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<project>/android/app/src/main/java/com/sinch/vqprobe/ui/AudioDiagnosticsActivity.kt:67: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+        loop = CheckBox(this).apply { text = "Loop reference WAV until stopped"; body.addView(this) }
+                                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<project>/android/app/src/main/java/com/sinch/vqprobe/ui/AudioDiagnosticsActivity.kt:99: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+        status.text = "Call: ${graph().telecom.status().optString("state")}\n${value.toString(2)}\nLast command: ${result?.toString(2) ?: "—"}"
+                      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<project>/android/app/src/main/java/com/sinch/vqprobe/ui/AudioDiagnosticsActivity.kt:99: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+        status.text = "Call: ${graph().telecom.status().optString("state")}\n${value.toString(2)}\nLast command: ${result?.toString(2) ?: "—"}"
+                       ~~~~~~
+<project>/android/app/src/main/java/com/sinch/vqprobe/ui/AudioDiagnosticsActivity.kt:99: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+        status.text = "Call: ${graph().telecom.status().optString("state")}\n${value.toString(2)}\nLast command: ${result?.toString(2) ?: "—"}"
+                                                                                                   ~~~~~~~~~~~~~~
+<project>/android/app/src/main/java/com/sinch/vqprobe/ui/InCallActivity.kt:25: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+            summary.text = "SINCH MOBILE VQ PROBE\n\n${status.optString("ui_number", "No call")}\n${status.optString("ui_state", status.optString("state"))}"
+                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<project>/android/app/src/main/java/com/sinch/vqprobe/ui/InCallActivity.kt:25: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+            summary.text = "SINCH MOBILE VQ PROBE\n\n${status.optString("ui_number", "No call")}\n${status.optString("ui_state", status.optString("state"))}"
+                            ~~~~~~~~~~~~~~~~~~~~~
+<project>/android/app/src/main/java/com/sinch/vqprobe/ui/MainActivity.kt:380: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+                    setupStatus.text = "Dialer role: ${yesNo(role)}  |  Phone: ${yesNo(phone)}\n" +
+                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<project>/android/app/src/main/java/com/sinch/vqprobe/ui/MainActivity.kt:380: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+                    setupStatus.text = "Dialer role: ${yesNo(role)}  |  Phone: ${yesNo(phone)}\n" +
+                                       ^
+<project>/android/app/src/main/java/com/sinch/vqprobe/ui/MainActivity.kt:380: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+                    setupStatus.text = "Dialer role: ${yesNo(role)}  |  Phone: ${yesNo(phone)}\n" +
+                                        ~~~~~~~~~~~~~
+<project>/android/app/src/main/java/com/sinch/vqprobe/ui/MainActivity.kt:380: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+                    setupStatus.text = "Dialer role: ${yesNo(role)}  |  Phone: ${yesNo(phone)}\n" +
+                                                                   ~~~~~~~~~~~~
+<project>/android/app/src/main/java/com/sinch/vqprobe/ui/MainActivity.kt:381: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+                        "Precise location: ${yesNo(precise)}  |  Background: ${yesNo(background)}"
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<project>/android/app/src/main/java/com/sinch/vqprobe/ui/MainActivity.kt:381: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+                        "Precise location: ${yesNo(precise)}  |  Background: ${yesNo(background)}"
+                         ~~~~~~~~~~~~~~~~~~
+<project>/android/app/src/main/java/com/sinch/vqprobe/ui/MainActivity.kt:381: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+                        "Precise location: ${yesNo(precise)}  |  Background: ${yesNo(background)}"
+                                                            ~~~~~~~~~~~~~~~~~
+<project>/android/app/src/main/java/com/sinch/vqprobe/ui/MainActivity.kt:387: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+                    if (!isDestroyed) status.text = "ERROR — ${ProbeService.safeError(error)}"
+                                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<project>/android/app/src/main/java/com/sinch/vqprobe/ui/MainActivity.kt:387: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+                    if (!isDestroyed) status.text = "ERROR — ${ProbeService.safeError(error)}"
+                                                     ~~~~~~~~
+
+   Explanation for issues of type "SetTextI18n":
+   When calling TextView#setText
+   * Never call Number#toString() to format numbers; it will not handle
+   fraction separators and locale-specific digits properly. Consider using
+   String#format with proper format specifications (%d or %f) instead.
+   * Do not pass a string literal (e.g. "Hello") to display text. Hardcoded
+   text can not be properly translated to other languages. Consider using
+   Android resource strings instead.
+   * Do not build messages by concatenating text chunks. Such messages can not
+   be properly translated.
+
+   https://developer.android.com/guide/topics/resources/localization.html
+
+0 errors, 23 warnings

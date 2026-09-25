@@ -1,0 +1,3 @@
+Source template only. tools/build_privileged_module.py validates the built, signed
+APK and embeds it here as SinchVQ.apk. Do not install a ZIP of this directory.
+The generated module ZIP contains the real APK and excludes this placeholder.

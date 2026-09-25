@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.sinch.vqprobe.audio.WavPcmTest" tests="14" skipped="0" failures="0" errors="0" timestamp="2026-09-25T14:37:48" hostname="6e67524789a5" time="0.076">
+  <properties/>
+  <testcase name="everyTruncatedPrefixOfAValidWavIsRejected" classname="com.sinch.vqprobe.audio.WavPcmTest" time="0.041"/>
+  <testcase name="repairsStaleCaptureHeaderAndDropsOnlyIncompleteFinalSample" classname="com.sinch.vqprobe.audio.WavPcmTest" time="0.002"/>
+  <testcase name="invalidWriterArgumentsNeverMutateAnExistingFile" classname="com.sinch.vqprobe.audio.WavPcmTest" time="0.001"/>
+  <testcase name="readsAllSupportedRatesAndExactPcmFrames" classname="com.sinch.vqprobe.audio.WavPcmTest" time="0.002"/>
+  <testcase name="rejectsTrailingBytesOutsideRiffAndInvalidContainer" classname="com.sinch.vqprobe.audio.WavPcmTest" time="0.003"/>
+  <testcase name="rejectsUnsupportedCodecsFormatsAndInvalidByteRates" classname="com.sinch.vqprobe.audio.WavPcmTest" time="0.005"/>
+  <testcase name="repairsTornSizeFieldsButNeverAnUnrecognizedHeader" classname="com.sinch.vqprobe.audio.WavPcmTest" time="0.002"/>
+  <testcase name="acceptsDataBeforeFormatAndEmptyPcm" classname="com.sinch.vqprobe.audio.WavPcmTest" time="0.002"/>
+  <testcase name="enforcesFullArtifactLimitIncludingHeaderWithoutAllocatingPayload" classname="com.sinch.vqprobe.audio.WavPcmTest" time="0.001"/>
+  <testcase name="rejectsTruncatedHeadersChunkPayloadsAndPadding" classname="com.sinch.vqprobe.audio.WavPcmTest" time="0.004"/>
+  <testcase name="rejectsMissingAndDuplicateChunks" classname="com.sinch.vqprobe.audio.WavPcmTest" time="0.004"/>
+  <testcase name="skipsUnknownChunksPaddingAndExtendedPcmFormat" classname="com.sinch.vqprobe.audio.WavPcmTest" time="0.001"/>
+  <testcase name="rewritesCanonicalHeaderWithoutChangingPcmOrFilePointer" classname="com.sinch.vqprobe.audio.WavPcmTest" time="0.001"/>
+  <testcase name="rejectsMalformedFormatChunksAndUnalignedData" classname="com.sinch.vqprobe.audio.WavPcmTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

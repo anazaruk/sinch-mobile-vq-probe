@@ -1,0 +1,84 @@
+Executed: sh gradlew --no-daemon --console=plain :app:clean :app:testDebugUnitTest :app:assembleDebug :app:lintDebug
+Observed process exit code: 0
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.11.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :app:clean
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:generateDebugBuildConfig
+> Task :app:generateDebugResValues
+> Task :app:checkDebugAarMetadata
+> Task :app:mapDebugSourceSetPaths
+> Task :app:generateDebugResources
+> Task :app:packageDebugResources
+> Task :app:createDebugCompatibleScreenManifests
+> Task :app:extractDeepLinksDebug
+> Task :app:mergeDebugResources
+> Task :app:parseDebugLocalResources
+> Task :app:processDebugMainManifest
+> Task :app:processDebugManifest
+> Task :app:preDebugUnitTestBuild UP-TO-DATE
+> Task :app:javaPreCompileDebug
+> Task :app:javaPreCompileDebugUnitTest
+> Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :app:mergeDebugShaders
+> Task :app:compileDebugShaders NO-SOURCE
+> Task :app:generateDebugAssets UP-TO-DATE
+> Task :app:mergeDebugAssets
+> Task :app:compressDebugAssets
+> Task :app:desugarDebugFileDependencies
+> Task :app:mergeDebugJniLibFolders
+> Task :app:checkDebugDuplicateClasses
+> Task :app:mergeDebugNativeLibs NO-SOURCE
+> Task :app:stripDebugDebugSymbols NO-SOURCE
+> Task :app:mergeLibDexDebug
+> Task :app:validateSigningDebug
+> Task :app:writeDebugAppMetadata
+> Task :app:writeDebugSigningConfigVersions
+> Task :app:preDebugAndroidTestBuild SKIPPED
+> Task :app:generateDebugAndroidTestResValues
+> Task :app:extractProguardFiles
+> Task :app:processDebugManifestForPackage
+> Task :app:processDebugResources
+> Task :app:mergeExtDexDebug
+
+> Task :app:compileDebugKotlin
+w: file://<project>/android/app/src/main/java/com/sinch/vqprobe/audio/AudioInjectionController.kt:275:51 'var isSpeakerphoneOn: Boolean' is deprecated. Deprecated in Java.
+w: file://<project>/android/app/src/main/java/com/sinch/vqprobe/service/ProbeService.kt:306:50 'static field stat_sys_phone_call: Int' is deprecated. Deprecated in Java.
+w: file://<project>/android/app/src/main/java/com/sinch/vqprobe/telecom/TelecomController.kt:79:59 'val state: Int' is deprecated. Deprecated in Java.
+w: file://<project>/android/app/src/main/java/com/sinch/vqprobe/telecom/TelecomController.kt:166:18 'val state: Int' is deprecated. Deprecated in Java.
+w: file://<project>/android/app/src/main/java/com/sinch/vqprobe/telecom/TelecomController.kt:177:41 'val state: Int' is deprecated. Deprecated in Java.
+w: file://<project>/android/app/src/main/java/com/sinch/vqprobe/telecom/TelecomController.kt:181:41 'val state: Int' is deprecated. Deprecated in Java.
+w: file://<project>/android/app/src/main/java/com/sinch/vqprobe/telecom/TelecomController.kt:200:42 'val state: Int' is deprecated. Deprecated in Java.
+w: file://<project>/android/app/src/main/java/com/sinch/vqprobe/telecom/TelecomController.kt:206:28 'val state: Int' is deprecated. Deprecated in Java.
+w: file://<project>/android/app/src/main/java/com/sinch/vqprobe/telecom/TelecomController.kt:340:61 'val state: Int' is deprecated. Deprecated in Java.
+w: file://<project>/android/app/src/main/java/com/sinch/vqprobe/telecom/TelecomController.kt:346:59 'val state: Int' is deprecated. Deprecated in Java.
+w: file://<project>/android/app/src/main/java/com/sinch/vqprobe/telecom/TelecomController.kt:535:62 'val state: Int' is deprecated. Deprecated in Java.
+w: file://<project>/android/app/src/main/java/com/sinch/vqprobe/telecom/TelecomController.kt:542:51 'val state: Int' is deprecated. Deprecated in Java.
+w: file://<project>/android/app/src/main/java/com/sinch/vqprobe/telecom/TelecomController.kt:543:39 'val state: Int' is deprecated. Deprecated in Java.
+w: file://<project>/android/app/src/main/java/com/sinch/vqprobe/telecom/TelecomController.kt:554:75 'val state: Int' is deprecated. Deprecated in Java.
+w: file://<project>/android/app/src/main/java/com/sinch/vqprobe/telecom/TelecomController.kt:555:35 'val state: Int' is deprecated. Deprecated in Java.
+w: file://<project>/android/app/src/main/java/com/sinch/vqprobe/telecom/TelecomController.kt:556:44 'val state: Int' is deprecated. Deprecated in Java.
+w: file://<project>/android/app/src/main/java/com/sinch/vqprobe/telemetry/RadioCollector.kt:383:26 'static field NETWORK_TYPE_IDEN: Int' is deprecated. Deprecated in Java.
+w: file://<project>/android/app/src/main/java/com/sinch/vqprobe/ui/AudioDiagnosticsActivity.kt:44:36 'val systemWindowInsetLeft: Int' is deprecated. Deprecated in Java.
+w: file://<project>/android/app/src/main/java/com/sinch/vqprobe/ui/AudioDiagnosticsActivity.kt:44:66 'val systemWindowInsetTop: Int' is deprecated. Deprecated in Java.
+w: file://<project>/android/app/src/main/java/com/sinch/vqprobe/ui/AudioDiagnosticsActivity.kt:45:24 'val systemWindowInsetRight: Int' is deprecated. Deprecated in Java.
+w: file://<project>/android/app/src/main/java/com/sinch/vqprobe/ui/AudioDiagnosticsActivity.kt:45:55 'val systemWindowInsetBottom: Int' is deprecated. Deprecated in Java.
+w: file://<project>/android/app/src/main/java/com/sinch/vqprobe/ui/MainActivity.kt:61:16 'var statusBarColor: Int' is deprecated. Deprecated in Java.
+
+> Task :app:compileDebugJavaWithJavac
+> Task :app:bundleDebugClassesToRuntimeJar
+> Task :app:bundleDebugClassesToCompileJar
+> Task :app:processDebugJavaRes
+> Task :app:compileDebugUnitTestKotlin
+> Task :app:dexBuilderDebug
+> Task :app:compileDebugUnitTestJavaWithJavac NO-SOURCE
+> Task :app:processDebugUnitTestJavaRes
+> Task :app:testDebugUnitTest
+> Task :app:mergeDebugGlobalSynthetics
+> Task :app:generateDebugAndroidTestLintModel
+> Task :app:generateDebugLintReportModel
+> Task :app:mergeDebugJavaResource
+> Task :app:generateDebugUnitTestLintModel
+> Task :app:mergeProjectDexDebug

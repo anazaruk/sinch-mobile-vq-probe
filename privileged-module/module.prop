@@ -1,0 +1,6 @@
+id=sinch_vq_privileged
+name=Sinch Mobile Voice Quality Probe (privileged)
+version=v0.2.1
+versionCode=3
+author=Sinch Voice Quality Engineering
+description=Dedicated handset probe APK and narrowly scoped privileged-permission allowlist. OEM audio policy, IMS, modem and SELinux policy remain unchanged.
